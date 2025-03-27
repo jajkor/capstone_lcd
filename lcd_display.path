@@ -1,0 +1,10 @@
+[Unit]
+Description=Watch for network changes and update LCD
+
+[Path]
+PathChanged=/run/NetworkManager/
+PathChanged=/sys/class/net/
+Unit=lcd_display.service
+
+[Install]
+WantedBy=multi-user.target

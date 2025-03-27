@@ -1,0 +1,12 @@
+[Unit]
+Description=LCD Display for Waveshare 1.69"
+After=network.target
+Wants=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/path/to/your/lcd_display.sh
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target
