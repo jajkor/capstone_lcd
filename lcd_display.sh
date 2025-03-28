@@ -14,4 +14,4 @@ if [ -z "$SSID" ]; then
 fi
 
 # Pass to C program
-./main $LCD_VERSION $HOSTNAME $SSID $IP
+/opt/LCD/RaspberryPi/c/main $LCD_VERSION $HOSTNAME $SSID $IP
