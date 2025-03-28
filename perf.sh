@@ -1,9 +1,10 @@
 #!/bin/bash
 
+sudo systemctl disable bluetooth
 sudo systemctl stop bluetooth
 
-sudo systemctl disable bluetooth
 sudo systemctl disable gdm
+sudo systemctl stop gdm
 
 sudo systemctl disable gnome-remote-desktop
 sudo systemctl stop gnome-remote-desktop
