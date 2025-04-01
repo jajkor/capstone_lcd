@@ -6,9 +6,9 @@ LCD_VERSION="1.699"
 HOSTNAME=$(hostname)
 
 # Get NETWORK with fallback
-NETWORK=$(nmcli connection show --active | grep wifi | awk '{print $1}')
+NETWORK="SSID: $(nmcli connection show --active | grep wifi | awk '{print $1}')"
 if [ -z "$NETWORK" ]; then
-  NETWORK=$(nmcli connection show --active | grep ethernet | awk '{print $1}')
+  NETWORK="WIRED: " + $(nmcli connection show --active | grep ethernet | awk '{print $1}')
 fi
 
 if [ -z "$NETWORK" ]; then
@@ -21,5 +21,5 @@ if [ -z "$IP" ]; then
 fi
 
 # Pass to C program
-#/opt/LCD/RaspberryPi/c/main $LCD_VERSION $HOSTNAME $NETWORK $IP
-echo $LCD_VERSION $HOSTNAME $NETWORK $IP
+/opt/LCD/RaspberryPi/c/main $LCD_VERSION $HOSTNAME $NETWORK $IP
+#echo $LCD_VERSION $HOSTNAME $NETWORK $IP

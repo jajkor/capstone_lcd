@@ -33,22 +33,15 @@ void LCD_NetInfo_test(char* host, char* ssid, char* ip)
 		printf("Failed to apply for black memory...\r\n");
 		exit(0);
 	}
-	char ssidStr[64] = "SSID: ";
-	strcat(ssidStr, ssid);
-
-	char ipStr[64] = "IP: ";
-	strcat(ipStr, ip);
 
 	Paint_NewImage(BlackImage, LCD_1IN69_WIDTH, LCD_1IN69_HEIGHT, 90, BLACK, 16);
-//	while (1) {
-		Paint_Clear(BLACK);
+	Paint_Clear(BLACK);
 
-		Paint_DrawString_EN(LCD_1IN69_WIDTH / 2, 20, host, &Font24, BLACK, WHITE);
-		Paint_DrawString_EN(10, 60, ssidStr, &Font20, BLACK, WHITE);
-		Paint_DrawString_EN(10, 90, ipStr, &Font20, BLACK, WHITE);
+	Paint_DrawString_EN(LCD_1IN69_WIDTH / 2, 20, host, &Font24, BLACK, WHITE);
+	Paint_DrawString_EN(LCD_1IN69_WIDTH / 7, 60, ssid, &Font20, BLACK, WHITE);
+	Paint_DrawString_EN(LCD_1IN69_WIDTH / 7, 90, ip, &Font20, BLACK, WHITE);
 
-		LCD_1IN69_DisplayWindows(0, 0, LCD_1IN69_WIDTH, LCD_1IN69_HEIGHT, BlackImage);
-//	}
+	LCD_1IN69_DisplayWindows(0, 0, LCD_1IN69_WIDTH, LCD_1IN69_HEIGHT, BlackImage);
 
 	//  Module Exit 
 	free(BlackImage);
