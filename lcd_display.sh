@@ -2,16 +2,24 @@
 
 LCD_VERSION="1.699"
 
-# Get hostname, SSID, and IP
+# Get hostname, NETWORK, and IP
 HOSTNAME=$(hostname)
 
-# Get SSID with fallback
-SSID=$(iwgetid -r 2>/dev/null)
+# Get NETWORK with fallback
+NETWORK=$(nmcli connection show --active | grep wifi | awk '{print $1}')
+if [ -z "$NETWORK" ]; then
+  NETWORK=$(nmcli connection show --active | grep ethernet | awk '{print $1}')
+fi
+
+if [ -z "$NETWORK" ]; then
+  NETWORK="None"
+fi
+
 IP=$(hostname -I | awk '{print $1}')
-if [ -z "$SSID" ]; then
-  SSID="None"
+if [ -z "$IP" ]; then
   IP="None"
 fi
 
 # Pass to C program
-/opt/LCD/RaspberryPi/c/main $LCD_VERSION $HOSTNAME $SSID $IP
+#/opt/LCD/RaspberryPi/c/main $LCD_VERSION $HOSTNAME $NETWORK $IP
+echo $LCD_VERSION $HOSTNAME $NETWORK $IP
