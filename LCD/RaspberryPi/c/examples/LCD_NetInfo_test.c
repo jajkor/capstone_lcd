@@ -37,9 +37,9 @@ void LCD_NetInfo_test(char* host, char* ssid, char* ip)
 	Paint_NewImage(BlackImage, LCD_1IN69_WIDTH, LCD_1IN69_HEIGHT, 90, BLACK, 16);
 	Paint_Clear(BLACK);
 
-	Paint_DrawString_EN(LCD_1IN69_WIDTH / 2, 20, host, &Font24, BLACK, WHITE);
-	Paint_DrawString_EN(LCD_1IN69_WIDTH / 7, 60, ssid, &Font20, BLACK, WHITE);
-	Paint_DrawString_EN(LCD_1IN69_WIDTH / 7, 90, ip, &Font20, BLACK, WHITE);
+	Paint_DrawString_EN(LCD_1IN69_WIDTH / 2, 20, host, &Font16, BLACK, WHITE);
+	Paint_DrawString_EN(LCD_1IN69_WIDTH / 7, 60, ssid, &Font16, BLACK, WHITE);
+	Paint_DrawString_EN(LCD_1IN69_WIDTH / 7, 90, ip, &Font16, BLACK, WHITE);
 
 	LCD_1IN69_DisplayWindows(0, 0, LCD_1IN69_WIDTH, LCD_1IN69_HEIGHT, BlackImage);
 
